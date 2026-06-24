@@ -7,10 +7,8 @@ Asignación: Crear los archivos  .h del proyecto.
 
 ## Integrador 2 — Benchmark y métricas -- JOAQUIN CASARIN
 Asignación: Crear los archivos .cpp del proyecto
-            implementar bechmark.cpp
-			implementar metrics.cpp
 			implementar benchmark.h
-			implementar metrics.h`.
+			
 
 
 ### DEVELOPERS
@@ -24,7 +22,7 @@ Asignación: Crear los archivos .cpp del proyecto
 ## Pareja 7 -- GERARDO MARTÍNEZ / PEDRO MEZA
 
 # ALGORITMOS
-# Sequential Bubble-Sort      SBS
+# Sequential Bubble-Sort      
 # Sequential Selection-Sort   SSS
 # Sequential Insertion-Sort   SIS
 # Sequential Merge-Sort       SMS
@@ -38,10 +36,11 @@ Asignación: Crear los archivos .cpp del proyecto
 # Parallel Quick-Sort         PQS
 # Parallel Bitonic-Sort       PBS
 
-			
+			SBS
 # Pareja 1 --> SBS - PBS
 # Pareja 2 --> SSS - PQS
 # Pareja 3 --> SIS - PMS
 # Pareja 4 --> SMS - PIS
 # Pareja 5 --> SQS - PSS
-# Pareja 6 --> SBS - PBS
+# Pareja 6 --> SBS - metrics .h , metrics.cpp
+# Pareja 7 --> PBS - bechmark.cpp
