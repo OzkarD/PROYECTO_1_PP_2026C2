@@ -22,25 +22,25 @@ Asignación: Crear los archivos .cpp del proyecto
 ## Pareja 7 -- GERARDO MARTÍNEZ / PEDRO MEZA
 
 # ALGORITMOS
-# Sequential Bubble-Sort      
+# Sequential Bubble-Sort      SBuS
 # Sequential Selection-Sort   SSS
 # Sequential Insertion-Sort   SIS
 # Sequential Merge-Sort       SMS
 # Sequential Quick-Sort       SQS
-# Sequential Bitonic-Sort     SBS
+# Sequential Bitonic-Sort     SBiS
 
-# Parallel Bubble-Sort        PBS
+# Parallel Bubble-Sort        PBuS
 # Parallel Selection-Sort     PSS
 # Parallel Insertion-Sort     PIS
 # Parallel Merge-Sort         PMS
 # Parallel Quick-Sort         PQS
-# Parallel Bitonic-Sort       PBS
+# Parallel Bitonic-Sort       PBiS
 
-			SBS
-# Pareja 1 --> SBS - PBS
+			
+# Pareja 1 --> SBuS - PBiS
 # Pareja 2 --> SSS - PQS
 # Pareja 3 --> SIS - PMS
 # Pareja 4 --> SMS - PIS
 # Pareja 5 --> SQS - PSS
-# Pareja 6 --> SBS - metrics .h , metrics.cpp
-# Pareja 7 --> PBS - bechmark.cpp
+# Pareja 6 --> SBiS - metrics .h , metrics.cpp
+# Pareja 7 --> PBuS - bechmark.cpp
