@@ -3,12 +3,14 @@
 
 using namespace std;
 
-void sequential::merge_sort() 
+void sequential::merge_sort(*int v, int n) 
 {
     cout << "Ejecutando merge_sort secuencial..." << endl;
+    return;
 }
 
-void parallel::merge_sort() 
+void parallel::merge_sort(*int v, int n) 
 {
     cout << "Ejecutando merge_sort paralelo..." << endl;
+    return;
 }

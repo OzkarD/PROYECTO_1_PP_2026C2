@@ -13,7 +13,7 @@ NOTA: Revisar el benchmark.cpp de prácticas pasadas. En general, se incluyen fu
 #include <omp.h>
 #include "benchmark.h"
 
-ResultTime benchmarkSequencialMethod(Sequencial_Method Method, const int* v, int min, int max, int repetitions)
+ResultTime benchmarkSortingMethod(Sorting_Method Method, const int* v, int size, int repetitions)
 {
 	ResultTime Tiempo;
 
@@ -23,12 +23,8 @@ ResultTime benchmarkSequencialMethod(Sequencial_Method Method, const int* v, int
 	return Tiempo;
 }
 
-ResultTime benchmarkParallelMethod(Parallel_Method Method, const int* v, int min, int max, int repetitions)
+
+void printBenchmarkTable(const ResultTime* seqResult, const ResultTime* parResult)
 {
-	ResultTime Tiempo;
-
-	Tiempo.omp_time = 1e100;
-	Tiempo.chrono_time = 1e100;
-
-	return Tiempo;
+	return;
 }

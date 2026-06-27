@@ -15,11 +15,12 @@ NOTA: Revisar el metrics.cpp de prácticas pasadas. En lo general, se calculan y
 
 void printTheoreticalMetrics(int size, int cutoff)
 {
-   
+   return;
 }
 
 void printAssignmentReminder(void)
 {
     printf("\nRecordatorio: incluir TDG, T1, Tinf, paralelismo=T1/Tinf y Pmin.\n");
+    return;
 }
 
