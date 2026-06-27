@@ -1,10 +1,8 @@
 #pragma once
 #include "config.h"
 
-typedef UserData(*Sequencial_Method)(const int* v, int min, int max);
-typedef UserData(*Parallel_Method)(const int* v, int min, int max);
+typedef void (*Sorting_Method)(const int* v, int size);
 
-ResultTime benchmarkSequencialMethod(Sequencial_Method Method, const int* v, int min, int max, int repetitions);
-ResultTime benchmarkParallelMethod(Parallel_Method Method, const int* v, int min, int max, int repetitions);
+ResultTime benchmarkSortingMethod(Sorting_Method method, const int* v, int size, int repetitions);
 
 void printBenchmarkTable(const ResultTime* seqResult, const ResultTime* parResult);
