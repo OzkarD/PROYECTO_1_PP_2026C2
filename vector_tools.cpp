@@ -1,4 +1,8 @@
+#include <cstring>
+#include <iostream>
+#include <cstdlib>
 #include "vector_tools.h"
+#include "config.h"
 
 int* createVector(int n)
 {
@@ -50,4 +54,28 @@ void checkSorted(const int* v, int n)
 		}
 	}
 	std::cout<<"El arreglo esta ordenado."<<std::endl;
+}
+
+UserData getUserData()
+{
+	UserData data;
+	std::cout<<"Ingrese el valor de bits que desea recorrer (1<<N): ";
+	std::cin>>data.bit_shift;
+	while(data.bit_shift < 1||data.bit_shift > 30)
+	{
+		std::cout << "El valor de bits debe estar entre 1 y 30." << std::endl;
+		std::cin >> data.bit_shift;
+	}
+	std::cout<<"Ingrese el valor minimo del rango de numeros (pueden ser negativos): ";
+	std::cin>>data.min_value;
+	std::cout<<"Ingrese el valor maximo del rango de numeros: ";
+	std::cin>>data.max_value;
+	std::cout<<"Ingrese el numero de repeticiones: ";
+	std::cin>>data.repetitions;
+	return data;
+}
+
+void copyVector(const int* source, int* destination, int n)
+{
+	std::memcpy(destination, source, n * sizeof(int));
 }
