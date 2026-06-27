@@ -2,21 +2,24 @@
 //
 
 #include <iostream>
-#include <exception>
+#include <time.h>
+#include <omp.h>
+#include <chrono>
 
+#include "config.h"
 
+#include "bitonic_sort.h"
+#include "bubble_sort.h"
+#include "insertion_sort.h"
+#include "merge_sort.h"
+#include "quick_sort.h"
+#include "selection_sort.h"
 
 
 int main() 
 {
-	try
-	{
-		
-	}
-	catch(const std::exception& ex)
-	{ 
-		
-	}
+	UserData data;
+	
 	return 0;
 }
 

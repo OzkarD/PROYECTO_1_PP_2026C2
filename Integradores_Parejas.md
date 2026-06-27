@@ -1,0 +1,10 @@
+# Integrador Jhonathan Rivas Guerrero
+- Pareja 2 -- JIMENA C. CHALE / LUIGI VELAZQUEZ
+- Pareja 5 -- ARI MARTÍNEZ / ARTURO PELCASTRE
+- Pareja 6 -- VIVIANA MARTÍNEZ / CARLOS MONTENEGRO
+- Pareja 7 -- GERARDO MARTÍNEZ / PEDRO MEZA
+
+# Intregador Joaquin Casarin
+- Pareja 1 -- JOSE ARTEAGA / VICTOR ZAVALA
+- Pareja 3 -- EMILIO IBARRA / EMMANUEL SÁNCHEZ
+- Pareja 4 -- NAHOMY LÓPEZ / MARIJOSE ROMERO

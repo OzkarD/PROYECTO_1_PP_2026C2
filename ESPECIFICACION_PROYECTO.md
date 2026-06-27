@@ -34,8 +34,8 @@ versión paralela.
 
 -- Pueden seguir esta secuencia de pasos para implementar su proyecto:
 
-While(1)
-{
+## While(1)
+## {
 	Despertar();
 	Tomar café();
 	Programar();
@@ -51,7 +51,7 @@ While(1)
        Dormir();
 	}
 	Dormir();
-}
+## }
 
 
 
