@@ -6,10 +6,20 @@ documentar el código de tal forma que como mínimo, se expliquen el funcionamie
 y de librerias extra que sean usadas.  
 
 
-NOTA: Revisar el metrics.cpp de prácticas pasadas. En lo general, se calculan y muestran los tiepos T1, T_infinito,
+NOTA: Revisar el metrics.cpp de prácticas pasadas. En lo general, se calculan y muestran los tiempos T1, T_infinito,
 	el paralelismo, el Pmin, etc.
 */
 
 #include <iostream>
 #include "metrics.h"
+
+void printTheoreticalMetrics(int size, int cutoff)
+{
+   
+}
+
+void printAssignmentReminder(void)
+{
+    printf("\nRecordatorio: incluir TDG, T1, Tinf, paralelismo=T1/Tinf y Pmin.\n");
+}
 
