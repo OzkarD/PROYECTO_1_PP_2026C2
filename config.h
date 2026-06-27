@@ -3,8 +3,8 @@
 typedef struct UserData
 {
 	int bit_shift;
-	int min_range;
-	int max_range;
+	int min_value;
+	int max_value;
 	int repetitions;
 } UserData;
 
