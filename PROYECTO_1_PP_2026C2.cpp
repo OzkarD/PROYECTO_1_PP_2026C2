@@ -6,6 +6,8 @@
 
 #include "config.h"
 #include "vector_tools.h"
+#include "benchmark.h"
+#include "metrics.h"
 
 #include "bitonic_sort.h"
 #include "bubble_sort.h"
@@ -27,21 +29,43 @@ int main()
 	
 	int* vector_copy = createVector(N);// El vector original no se toca, para que cada algoritmo pueda ordenar y no modifique el vector original
 
-	//copyVector(vector, vector_copy, N);
+	copyVector(vector, vector_copy, N);
+	ResultTime seq_bitonic = benchmarkSortingMethod(sequential::bitonic_sort, vector_copy, data.repetitions);
+	copyVector(vector, vector_copy, N);
+	ResultTime par_bitonic = benchmarkSortingMethod(parallel::bitonic_sort, vector_copy, data.repetitions);
+	copyVector(vector, vector_copy, N);
+	ResultTime seq_bubble = benchmarkSortingMethod(sequential::bubble_sort, vector_copy, data.repetitions);
+	copyVector(vector, vector_copy, N);
+	ResultTime par_bubble = benchmarkSortingMethod(parallel::bubble_sort, vector_copy, data.repetitions);
+	copyVector(vector, vector_copy, N);
+	ResultTime seq_insertion = benchmarkSortingMethod(sequential::insertion_sort, vector_copy, data.repetitions);
+	copyVector(vector, vector_copy, N);
+	ResultTime par_insertion = benchmarkSortingMethod(parallel::insertion_sort, vector_copy, data.repetitions);
+	copyVector(vector, vector_copy, N);
+	ResultTime seq_merge = benchmarkSortingMethod(sequential::merge_sort, vector_copy, data.repetitions);
+	copyVector(vector, vector_copy, N);
+	ResultTime par_merge = benchmarkSortingMethod(parallel::merge_sort, vector_copy, data.repetitions);
+	copyVector(vector, vector_copy, N);
+	ResultTime seq_quick = benchmarkSortingMethod(sequential::quick_sort, vector_copy, data.repetitions);
+	copyVector(vector, vector_copy, N);
+	ResultTime par_quick = benchmarkSortingMethod(parallel::quick_sort, vector_copy, data.repetitions);
+	copyVector(vector, vector_copy, N);
+	ResultTime seq_selection = benchmarkSortingMethod(sequential::selection_sort, vector_copy, data.repetitions);
+	copyVector(vector, vector_copy, N);
+	ResultTime par_selection = benchmarkSortingMethod(parallel::selection_sort, vector_copy, data.repetitions);
 
-	/*
-	Implementacion de las funciones con benchmark
-	*/
-
-	/*
-	Impresion del benchmark
-	*/
-
-	/*
-	Impresion de metrics
-	*/
+	printBenchmarkTable(seq_bitonic, par_bitonic,
+						seq_bubble, par_bubble,
+						seq_insertion, par_insertion,
+						seq_merge, par_merge,
+						seq_quick, par_quick,
+						seq_selection, par_selection);
+	
+	printTheoreticalMetrics(N);
+	printAssignmentReminder();
 
 	destroyVector(vector);
+	destroyVector(vector_copy);
 	return 0;
 }
 
