@@ -13,7 +13,7 @@ NOTA: Revisar el metrics.cpp de prácticas pasadas. En lo general, se calculan y
 #include <iostream>
 #include "metrics.h"
 
-void printTheoreticalMetrics(int size, int cutoff)
+void printTheoreticalMetrics(int size)
 {
    
 }

@@ -127,7 +127,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="benchmark.cpp" />
+    <ClCompile Include="bitonic_sort.cpp" />
+    <ClCompile Include="bubble_sort.cpp" />
+    <ClCompile Include="insertion_sort.cpp" />
+    <ClCompile Include="merge_sort.cpp" />
+    <ClCompile Include="metrics.cpp" />
     <ClCompile Include="PROYECTO_1_PP_2026C2.cpp" />
+    <ClCompile Include="quick_sort.cpp" />
+    <ClCompile Include="selection_sort.cpp" />
     <ClCompile Include="vector_tools.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -136,11 +144,13 @@
     <None Include="RUBRICA DE EVALUACION.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="benchmark.h" />
     <ClInclude Include="bitonic_sort.h" />
     <ClInclude Include="bubble_sort.h" />
     <ClInclude Include="config.h" />
     <ClInclude Include="insertion_sort.h" />
     <ClInclude Include="merge_sort.h" />
+    <ClInclude Include="metrics.h" />
     <ClInclude Include="quick_sort.h" />
     <ClInclude Include="selection_sort.h" />
     <ClInclude Include="vector_tools.h" />
