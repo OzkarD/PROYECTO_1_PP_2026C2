@@ -30,29 +30,29 @@ int main()
 	int* vector_copy = createVector(N);// El vector original no se toca, para que cada algoritmo pueda ordenar y no modifique el vector original
 
 	copyVector(vector, vector_copy, N);
-	ResultTime seq_bitonic = benchmarkSortingMethod(sequential::bitonic_sort, vector_copy, data.repetitions);
+	ResultTime seq_bitonic = benchmarkSortingMethod(sequential::bitonic_sort, vector_copy, N, data.repetitions);
 	copyVector(vector, vector_copy, N);
-	ResultTime par_bitonic = benchmarkSortingMethod(parallel::bitonic_sort, vector_copy, data.repetitions);
+	ResultTime par_bitonic = benchmarkSortingMethod(parallel::bitonic_sort, vector_copy, N, data.repetitions);
 	copyVector(vector, vector_copy, N);
-	ResultTime seq_bubble = benchmarkSortingMethod(sequential::bubble_sort, vector_copy, data.repetitions);
+	ResultTime seq_bubble = benchmarkSortingMethod(sequential::bubble_sort, vector_copy, N, data.repetitions);
 	copyVector(vector, vector_copy, N);
-	ResultTime par_bubble = benchmarkSortingMethod(parallel::bubble_sort, vector_copy, data.repetitions);
+	ResultTime par_bubble = benchmarkSortingMethod(parallel::bubble_sort, vector_copy, N, data.repetitions);
 	copyVector(vector, vector_copy, N);
-	ResultTime seq_insertion = benchmarkSortingMethod(sequential::insertion_sort, vector_copy, data.repetitions);
+	ResultTime seq_insertion = benchmarkSortingMethod(sequential::insertion_sort, vector_copy, N, data.repetitions);
 	copyVector(vector, vector_copy, N);
-	ResultTime par_insertion = benchmarkSortingMethod(parallel::insertion_sort, vector_copy, data.repetitions);
+	ResultTime par_insertion = benchmarkSortingMethod(parallel::insertion_sort, vector_copy, N, data.repetitions);
 	copyVector(vector, vector_copy, N);
-	ResultTime seq_merge = benchmarkSortingMethod(sequential::merge_sort, vector_copy, data.repetitions);
+	ResultTime seq_merge = benchmarkSortingMethod(sequential::merge_sort, vector_copy, N, data.repetitions);
 	copyVector(vector, vector_copy, N);
-	ResultTime par_merge = benchmarkSortingMethod(parallel::merge_sort, vector_copy, data.repetitions);
+	ResultTime par_merge = benchmarkSortingMethod(parallel::merge_sort, vector_copy, N, data.repetitions);
 	copyVector(vector, vector_copy, N);
-	ResultTime seq_quick = benchmarkSortingMethod(sequential::quick_sort, vector_copy, data.repetitions);
+	ResultTime seq_quick = benchmarkSortingMethod(sequential::quick_sort, vector_copy, N, data.repetitions);
 	copyVector(vector, vector_copy, N);
-	ResultTime par_quick = benchmarkSortingMethod(parallel::quick_sort, vector_copy, data.repetitions);
+	ResultTime par_quick = benchmarkSortingMethod(parallel::quick_sort, vector_copy, N, data.repetitions);
 	copyVector(vector, vector_copy, N);
-	ResultTime seq_selection = benchmarkSortingMethod(sequential::selection_sort, vector_copy, data.repetitions);
+	ResultTime seq_selection = benchmarkSortingMethod(sequential::selection_sort, vector_copy, N, data.repetitions);
 	copyVector(vector, vector_copy, N);
-	ResultTime par_selection = benchmarkSortingMethod(parallel::selection_sort, vector_copy, data.repetitions);
+	ResultTime par_selection = benchmarkSortingMethod(parallel::selection_sort, vector_copy, N, data.repetitions);
 
 	printBenchmarkTable(seq_bitonic, par_bitonic,
 						seq_bubble, par_bubble,
