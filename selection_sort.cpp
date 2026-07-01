@@ -1,4 +1,5 @@
 #include "selection_sort.h"
+#include "vector_tools.h"
 #include <iostream>
 
 using namespace std;
@@ -16,9 +17,10 @@ void sequential::selection_sort(int* v, int n)
             if (v[j] < v[value_min])
                 value_min = j;
         }
-
         swap(v[i], v[value_min]);
     }
+
+	checkSorted(v, n);
 }
 
 void parallel::selection_sort(int* v, int n) 
