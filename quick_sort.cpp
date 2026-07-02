@@ -1,5 +1,6 @@
 #include "quick_sort.h"
 #include <iostream>
+#include "vector_tools.h"
 
 using namespace std;
 
@@ -49,6 +50,7 @@ void sequential::quick_sort(int* v, int n)
         return;
 
     quickSortRecursive(v, 0, n - 1);
+	checkSorted(v, n);
 }
 
 void parallel::quick_sort(int* v, int n)
