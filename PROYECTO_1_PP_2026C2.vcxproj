@@ -133,6 +133,7 @@
     <ClCompile Include="insertion_sort.cpp" />
     <ClCompile Include="merge_sort.cpp" />
     <ClCompile Include="metrics.cpp" />
+    <ClCompile Include="Pareja5_TestFile.cpp" />
     <ClCompile Include="PROYECTO_1_PP_2026C2.cpp" />
     <ClCompile Include="quick_sort.cpp" />
     <ClCompile Include="selection_sort.cpp" />
