@@ -48,7 +48,7 @@ void sequential::quick_sort(int* v, int n)
 {
     if (v == nullptr || n <= 1)
         return;
-
+    cout << "Ejecutando quick_sort secuencial..." << endl;
     quickSortRecursive(v, 0, n - 1);
 	checkSorted(v, n);
 }
