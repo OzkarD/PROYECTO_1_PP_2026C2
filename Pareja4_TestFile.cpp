@@ -80,6 +80,16 @@ void sequential::merge_sort(int* v, int n)
     mergeSort(v, 0, n - 1);
 }
 
+/*
+void parallel::merge_sort(int* v, int n)
+{
+    cout << "Ejecutando merge_sort paralelo..." << endl;
+    return;
+}
+*/
+
+//---------------------------------------------------------------------------------
+
 //Implementado por integrador
 int main(void)
 {
@@ -99,7 +109,7 @@ int main(void)
             printf("%d ",array1[i]);
         }
         printf("\n");
-    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    //----------------------------------------------
 
         printf("Parte dos a continuacion...\n");
 
@@ -134,11 +144,3 @@ int main(void)
 
         return 0;
 }
-
-/*
-void parallel::merge_sort(int* v, int n)
-{
-    cout << "Ejecutando merge_sort paralelo..." << endl;
-    return;
-}
-*/
