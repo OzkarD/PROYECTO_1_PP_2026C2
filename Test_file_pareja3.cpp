@@ -16,20 +16,23 @@
 #include "quick_sort.h"
 #include "selection_sort.h"
 
+//Implementado por el Integrador
+#include "vector_tools.cpp"
+#include "insertion_sort.cpp"
 
 int main()
 {
 	srand((unsigned)time(NULL));
 	//UserData data = getUserData();
 
-	const int N = 20;
+	const int N = 50000;
 	int* vector = createVector(N);
-	fillRandom(vector, N,0, 50);
+	fillRandom(vector, N,-50, 50);
 	printSample(vector, N, 20);
 
 	sequential::insertion_sort(vector, N);
 
-	for (int i = 0; i < N; i++)
+	for (int i = 0; i < 20; i++)
 	{
 		printf("%d ", vector[i]);
 	}

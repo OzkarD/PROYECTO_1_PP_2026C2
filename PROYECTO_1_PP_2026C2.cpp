@@ -68,4 +68,3 @@ int main()
 	destroyVector(vector_copy);
 	return 0;
 }
-
