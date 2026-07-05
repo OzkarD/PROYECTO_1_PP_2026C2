@@ -91,6 +91,7 @@ void parallel::merge_sort(int* v, int n)
 //---------------------------------------------------------------------------------
 
 //Implementado por integrador
+/*
 int main(void)
 {
     int array1[] = {-4, 2, -6, 8, 1, -3, 5, -7, 0, -9};
@@ -144,3 +145,4 @@ int main(void)
 
         return 0;
 }
+*/

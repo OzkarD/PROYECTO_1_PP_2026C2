@@ -20,6 +20,7 @@
 #include "vector_tools.cpp"
 #include "insertion_sort.cpp"
 
+/*
 int main()
 {
 	srand((unsigned)time(NULL));
@@ -41,4 +42,4 @@ int main()
 
 	return 0;
 }
-
+*/
