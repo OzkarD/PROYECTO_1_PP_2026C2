@@ -7,12 +7,27 @@ y de librerias extra que sean usadas.
 
 NOTA: Revisar el benchmark.cpp de prácticas pasadas. En general, se incluyen funciones de
     OMP y Chrono.
+
+
+* Bubble sort PARALLEL
+
+Si necesitamos cambiar una parte de la lógica para trabajar con el bubble sort pero ahora con uso de paralelización, debemos hacer uso de una variable boleana.
+Y esto porque es así :
+
+Normalmente el bubble sort tiene la siguiente función, de comparar los valores adyacentes del arreglo, donde el menor se mueve de posición, por lo tanto,
+estamos haciendo una comparación entre v[i] > v[i + 1] para determinar el nuevo valor de la variable temporal y organizar los elementos adecuadamente.
+
+Y porque simplemente no podemos hacer uso de un pragma parallel for en el algoritmo secuencial, el problema que nos encontramos es el siguiente : que al tener un
+ciclo for anidado, podemos generar una condición de carrera, donde tengamos valores basura y realmente no le demos provecho al algoritmo, por lo que, debemos de
+separar los ciclos for y de esa manera hacer las paralelizaciones y finalmente ir validando con nuestra variable boleana que ya esos valores han sido organizados.
 */
+
 #include <iostream>
 #include <chrono>
 #include <iomanip>
 #include <omp.h>
 #include "benchmark.h"
+#include "bubble_sort.h"
 
 ResultTime benchmarkSortingMethod(Sorting_Method Method, const int* v, int size, int repetitions)
 {
@@ -95,3 +110,46 @@ void printBenchmarkTable(ResultTime& seq_bitonic, ResultTime& par_bitonic,
     printRow("Selection Paralelo", par_selection, seq_selection.chrono_time);
     return;
 }
+
+int main()
+{
+    int n = 100;
+
+    int* v = (int*)malloc(n * sizeof(int));
+
+    if (v == NULL)
+    {
+        cout << "Error, no se ha podido asignar memoría dinámica al arreglo " << endl;
+        return 1;
+    }
+
+    for (int i = 0; i < n; i++)
+    {
+        v[i] = rand() % 100 + 1;
+    }
+
+    cout << "Los primeros elementos desordenados son los siguientes: " << endl;
+    for (int i = 0; i < n; i++)
+    {
+        printf("v[i] = %d \n", v[i]);
+    }
+
+    double t0 = omp_get_wtime();
+
+    parallel::bubble_sort(v, n);
+
+    double t1 = omp_get_wtime();
+    double time = t1 - t0;
+
+    cout << "El tiempo de ejecucion fue el siguiente: %f" << time << " segundos" << endl;
+
+    cout << "Los primeros elementos ordenados son los siguientes: " << endl;
+    for (int i = 0; i < 11; i++)
+    {
+        cout << "v[i] = %d" << v[i]) << endl;
+    }
+
+    free(v);
+    return 0;
+}
+

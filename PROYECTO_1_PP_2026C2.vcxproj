@@ -134,7 +134,12 @@
     <ClCompile Include="merge_sort.cpp" />
     <ClCompile Include="metrics.cpp" />
     <ClCompile Include="Pareja5_TestFile.cpp" />
-    <ClCompile Include="PROYECTO_1_PP_2026C2.cpp" />
+    <ClCompile Include="Pareja7_PBuS_Test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="PROYECTO_1_PP_2026C2.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="quick_sort.cpp" />
     <ClCompile Include="selection_sort.cpp" />
     <ClCompile Include="vector_tools.cpp" />
