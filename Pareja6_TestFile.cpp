@@ -2,7 +2,6 @@
 #include <limits>
 #include <vector>
 #include "bitonic_sort.h"
-#include "vector_tools.h"
 
 using namespace std;
 
@@ -88,7 +87,6 @@ void sequential::bitonic_sort(int* v, int n)
     if ((n & (n - 1)) == 0)
     {
         bitonicSort(v, 0, n, true); //Si el algoritmo ya es potencia de 2, se ordena directamente
-        checkSorted(v, n);
         return;
     }
 
@@ -113,11 +111,4 @@ void sequential::bitonic_sort(int* v, int n)
     // Copiar únicamente los datos originales ya ordenados
     for (int i = 0; i < n; ++i)
         v[i] = temp[i];
-	checkSorted(v, n);
-}
-
-void parallel::bitonic_sort(int* v, int n) 
-{
-    cout << "Ejecutando bitonic_sort paralelo..." << endl;
-    return;
 }

@@ -6,7 +6,7 @@ using namespace std;
 
 void sequential::selection_sort(int* v, int n)
 {
-    cout << "Ejecutando selection sort en secuencial...\n" << endl;
+    cout << "Ejecutando selection sort en secuencial..." << endl;
 
     for (int i = 0; i < n-1; i++)
     {
@@ -19,7 +19,6 @@ void sequential::selection_sort(int* v, int n)
         }
         swap(v[i], v[value_min]);
     }
-
 	checkSorted(v, n);
 }
 
