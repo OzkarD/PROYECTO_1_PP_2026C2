@@ -48,9 +48,6 @@
     <ClCompile Include="Test_file_pareja3.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="PROYECTO_1_PP_2026C2.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ESPECIFICACION_PROYECTO.md" />

@@ -7,5 +7,7 @@ namespace sequential
 
 namespace parallel
 {
-	void merge_sort(int* v, int n);
+	void merge_sort(int* v, int left, int right, int cutoff);
 }
+
+void merge(int* v, int left, int mid, int right);
