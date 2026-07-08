@@ -124,33 +124,37 @@ void parallel::selection_sort(int* v, int n)
 {
     cout << "Ejecutando selection_sort paralelo..." << endl;
     
-    for(int i = 0; i < n - 1; i++)
+    for (int i = 0; i < n - 1; i++)
+{
+    int value_min = i;
+
+    // Arreglo para guardar el mínimo de cada hilo
+    int mins[MAX_THREADS];
+
+    #pragma omp parallel
     {
-        int value_min = i;
-
-        #pragma omp for
-
+        int tid = omp_get_thread_num();
         int local_min = value_min;
 
+        #pragma omp for
         for (int j = i + 1; j < n; j++)
         {
             if (v[j] < v[local_min])
                 local_min = j;
         }
-        #pragma omp critical
-        {
-            if (v[local_min] < v[value_min]) {
-                value_min = local_min;
-            }
-        }
-        swap(v[i], v[value_min]);
-    }
-    checkSorted(v, n);
-}
 
-void swap(int& a, int& b)
-{
-	int temp = a;
-	a = b;
-	b = temp;
+        // Cada hilo guarda SU resultado
+        mins[tid] = local_min;
+    }
+
+    // Un solo hilo compara los mínimos de cada hilo
+    for (int t = 0; t < num_threads; t++)
+    {
+        if (v[mins[t]] < v[value_min])
+            value_min = mins[t];
+    }
+
+    swap(v[i], v[value_min]);
+}
+    checkSorted(v, n);
 }
