@@ -26,7 +26,7 @@ int main()
 
 	const int N = 1<<10;
 	int* vector = createVector(N);
-	fillRandom(vector, N,0, 50);
+	fillRandom(vector, N,-50, 50);
 	printSample(vector, N, 20);
 
 	int* vector_copy = createVector(N);
@@ -43,13 +43,13 @@ int main()
 
 	time1 = omp_get_wtime();
 
-	parallel::merge_sort(vector_copy, 0, N - 1, 5);
+	parallel::merge_sort(vector_copy, N);
 
     time2 = omp_get_wtime();
 
 	printf("Tiempo de ejecución paralelo: %f segundos\n", time2 - time1);
 
-	for (int i = 0; i < N; i++)
+	for (int i = 0; i < 20; i++)
 	{
 		printf("%d ", vector[i]);
 	}

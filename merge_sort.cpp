@@ -9,27 +9,13 @@ void sequential::merge_sort(int* v, int n)
     return;
 }
 
-void parallel::merge_sort(int* v, int left, int right, int cutoff) 
+void parallel::merge_sort(int* v, int n)
 {
    // cout << "Ejecutando merge_sort paralelo..." << endl;
-
-    if (left >= right)
-    {
+    if (n <= 1)
         return;
-    }
 
-
-    int mid = left + (right - left) / 2;
-
-    #pragma omp task
-    merge_sort(v, left, mid, cutoff);
-
-    #pragma omp task
-    merge_sort(v, mid + 1, right, cutoff);
-
-    #pragma omp taskwait
-    merge(v, left, mid, right);
-
+    merge_sort_parallel(v, 0, n - 1);
 }
 
 void merge(int* v, int left, int mid, int right) // Función auxiliar para fusionar dos arreglos ya ordenados
@@ -81,4 +67,27 @@ void merge(int* v, int left, int mid, int right) // Función auxiliar para fusio
 
     delete[] L;
     delete[] R;
+}
+
+void merge_sort_parallel(int* v, int left, int right)
+{
+    // cout << "Ejecutando merge_sort paralelo..." << endl;
+
+    if (left >= right)
+    {
+        return;
+    }
+
+
+    int mid = left + (right - left) / 2;
+
+    #pragma omp task
+    merge_sort_parallel(v, left, mid);
+
+    #pragma omp task
+    merge_sort_parallel(v, mid + 1, right);
+
+    #pragma omp taskwait
+    merge(v, left, mid, right);
+
 }
