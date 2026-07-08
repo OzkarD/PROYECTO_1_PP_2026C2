@@ -93,3 +93,64 @@ int main()
 }
 
 #endif
+
+#include "selection_sort.h"
+#include "vector_tools.h"
+#include <iostream>
+#include <omp.h>
+
+using namespace std;
+
+void sequential::selection_sort(int* v, int n)
+{
+    cout << "Ejecutando selection sort en secuencial...\n" << endl;
+
+    for (int i = 0; i < n-1; i++)
+    {
+        int value_min = i;
+
+        for (int j = i + 1; j < n; j++)
+        {
+            if (v[j] < v[value_min])
+                value_min = j;
+        }
+        swap(v[i], v[value_min]);
+    }
+
+	checkSorted(v, n);
+}
+
+void parallel::selection_sort(int* v, int n) 
+{
+    cout << "Ejecutando selection_sort paralelo..." << endl;
+    
+    for(int i = 0; i < n - 1; i++)
+    {
+        int value_min = i;
+
+        #pragma omp for
+
+        int local_min = value_min;
+
+        for (int j = i + 1; j < n; j++)
+        {
+            if (v[j] < v[local_min])
+                local_min = j;
+        }
+        #pragma omp critical
+        {
+            if (v[local_min] < v[value_min]) {
+                value_min = local_min;
+            }
+        }
+        swap(v[i], v[value_min]);
+    }
+    checkSorted(v, n);
+}
+
+void swap(int& a, int& b)
+{
+	int temp = a;
+	a = b;
+	b = temp;
+}
