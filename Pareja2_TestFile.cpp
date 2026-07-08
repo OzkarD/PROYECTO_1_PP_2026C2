@@ -41,7 +41,7 @@
 using namespace std;
 
 // Función swap se implementa en el selection y el quick sort
-void swap(int& a, int& b)
+static void swap(int& a, int& b)
 {
     int temp = a;
     a = b;
