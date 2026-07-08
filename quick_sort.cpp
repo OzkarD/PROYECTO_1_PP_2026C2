@@ -1,6 +1,7 @@
 #include "quick_sort.h"
 #include <iostream>
 #include "vector_tools.h"
+#include <omp.h>
 
 using namespace std;
 
@@ -55,5 +56,25 @@ void sequential::quick_sort(int* v, int n)
 
 void parallel::quick_sort(int* v, int n)
 {
+    if (v == nullptr || n <= 1)
+        return;
     cout << "Ejecutando quick_sort paralelo..." << endl;
+
+    int pi = partition(v, 0, n - 1);
+
+#pragma omp parallel for shared(v)
+    for (int i = 0; i < 2; i++)
+    {
+        if (i == 0)
+        {
+            // Primer hilo
+            quickSortRecursive(v, 0, pi - 1);
+        }
+        else
+        {
+            // Segundo hilo
+            quickSortRecursive(v, pi + 1, n - 1);
+        }
+    }
+    checkSorted(v, n);
 }
