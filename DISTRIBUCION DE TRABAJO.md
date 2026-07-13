@@ -1,12 +1,12 @@
 16 alumnos: 7 parejas + 2 integradores.
 
-## Integrador 1 ó Men˙ y flujo principal  -- JHONATHAN RIVAS GUERRERO
-AsignaciÛn: Crear los archivos  .h del proyecto.
+## Integrador 1 ‚Äî Men√∫ y flujo principal  -- JHONATHAN RIVAS GUERRERO
+Asignaci√≥n: Crear los archivos  .h del proyecto.
             implementar main
 			implementar menu.
 
-## Integrador 2 ó Benchmark y mÈtricas -- JOAQUIN CASARIN
-AsignaciÛn: Crear los archivos .cpp del proyecto
+## Integrador 2 ‚Äî Benchmark y m√©tricas -- JOAQUIN CASARIN
+Asignaci√≥n: Crear los archivos .cpp del proyecto
 			implementar benchmark.h
 			
 
@@ -15,11 +15,11 @@ AsignaciÛn: Crear los archivos .cpp del proyecto
 
 ## Pareja 1 -- JOSE ARTEAGA / VICTOR ZAVALA
 ## Pareja 2 -- JIMENA CHALE / LUIGI VELAZQUEZ
-## Pareja 3 -- EMILIO IBARRA / EMMANUEL S¡NCHEZ
-## Pareja 4 -- NAHOMY L”PEZ / MARIJOSE ROMERO
-## Pareja 5 -- ARI MARTÕNEZ / ARTURO PELCASTRE
-## Pareja 6 -- VIVIANA MARTÕNEZ / CARLOS MONTENEGRO
-## Pareja 7 -- GERARDO MARTÕNEZ / PEDRO MEZA
+## Pareja 3 -- EMILIO IBARRA / EMMANUEL S√ÅNCHEZ
+## Pareja 4 -- NAHOMY L√ìPEZ / MARIJOSE ROMERO
+## Pareja 5 -- ARI MART√çNEZ / ARTURO PELCASTRE
+## Pareja 6 -- VIVIANA MART√çNEZ / CARLOS MONTENEGRO
+## Pareja 7 -- GERARDO MART√çNEZ / PEDRO MEZA
 
 # ALGORITMOS
 # Sequential Bubble-Sort      SBuS

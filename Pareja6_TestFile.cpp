@@ -1,14 +1,3 @@
-/*
-PAREJA A CRAGO: Pareja 6 - Viviana Martínez / Carlos Montenegro
-
-En este archivo se ha de desarrollar la lógica del metrics.h y se ha de
-documentar el código de tal forma que como mínimo, se expliquen el funcionamiento de variables, de funciones
-y de librerias extra que sean usadas.
-
-
-NOTA: Revisar el metrics.cpp de prácticas pasadas. En lo general, se calculan y muestran los tiempos T1, T_infinito,
-    el paralelismo, el Pmin, etc.
-*/
 #include <iostream>
 #include <limits>
 #include <vector>
@@ -23,12 +12,122 @@ int num_threads = omp_get_max_threads();
 
 double p = static_cast<double>(num_threads);
 
+// Intercambia dos elementos
+void swap(int* a, int* b)
+{
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+// Calcula la siguiente potencia de 2
+int nextPowerOfTwo(int n)
+{
+    if (n <= 1)
+        return 1;
+
+    int p = 1;
+
+    while (p < n)
+        p <<= 1;
+
+    return p;
+}
+
+// Compara e intercambia según el orden
+void compare(int v[], int i, int j, bool ascending)
+{
+    if (ascending)
+    {
+        if (v[i] > v[j])
+            swap(&v[i], &v[j]);
+    }
+    else
+    {
+        if (v[i] < v[j])
+            swap(&v[i], &v[j]);
+    }
+}
+
+// Mezcla bitónica
+void bitonicMerge(int v[], int low, int count, bool ascending)
+{
+    if (count > 1)
+    {
+        int k = count / 2;
+
+        for (int i = low; i < low + k; i++)
+            compare(v, i, i + k, ascending);
+
+        bitonicMerge(v, low, k, ascending);
+        bitonicMerge(v, low + k, k, ascending);
+    }
+}
+
+// Ordenamiento recursivo
+void bitonicSort(int v[], int low, int count, bool ascending)
+{
+    if (count > 1)
+    {
+        int k = count / 2;
+
+        // Primera mitad ascendente
+        bitonicSort(v, low, k, true);
+
+        // Segunda mitad descendente
+        bitonicSort(v, low + k, k, false);
+
+        // Mezclar
+        bitonicMerge(v, low, count, ascending);
+    }
+}
+
+// Función solicitada
+void sequential::bitonic_sort(int* v, int n)
+{
+    cout << "Ejecutando bitonic_sort secuencial..." << endl;
+
+    if (n <= 0)
+        return;
+
+    // Si ya es potencia de 2, ordenar directamente
+    if ((n & (n - 1)) == 0)
+    {
+        bitonicSort(v, 0, n, true); //Si el algoritmo ya es potencia de 2, se ordena directamente
+        return;
+    }
+
+    // Obtener la siguiente potencia de 2
+    size_t newSize = static_cast<size_t>(nextPowerOfTwo(n));
+
+    // Crear un vector temporal con el nuevo tamaño (evita problemas de sobre escritura)
+    std::vector<int> temp;
+    temp.resize(newSize);
+
+    // Copiar los datos originales
+    for (size_t i = 0; i < static_cast<size_t>(n); ++i)
+        temp[i] = v[i];
+
+    // Rellenar con el valor máximo posible
+    for (size_t i = static_cast<size_t>(n); i < newSize; ++i)
+        temp[i] = numeric_limits<int>::max();
+
+    // Ordenar el arreglo temporal
+    bitonicSort(temp.data(), 0, static_cast<int>(newSize), true);
+
+    // Copiar únicamente los datos originales ya ordenados
+    for (int i = 0; i < n; ++i)
+        v[i] = temp[i];
+
+    
+}
+
 double log2(double n)
 {
     return log(n) / log(2.0);
 }
 
-void printMetricRow(const char* name, double T1, double Tinf)
+void printMetricRow(const char *name, double T1, double Tinf)
 {
     double parallelism;
     int Pmin;
@@ -44,7 +143,7 @@ void printMetricRow(const char* name, double T1, double Tinf)
         Pmin = ceil(parallelism);
     }
 
-    cout << setw(35) << left << name << " | " << setw(15) << T1 << " | " << setw(15) << Tinf << " | " << setw(18) << parallelism << " | " << setw(13) << Pmin << " | " << setw(15) << endl;
+    cout << setw(35) << left << name << " | " << setw(15) << T1 << " | " << setw(15) << Tinf << " | " << setw(18) << parallelism << " | "  << setw(13) << Pmin << " | "  << setw(15) << endl;
 }
 
 void printTheoreticalMetrics(int size)
@@ -58,7 +157,7 @@ void printTheoreticalMetrics(int size)
     double T1;
     double Tinf;
 
-    cout << endl << "Metricas teoricas para n = " << n << endl;
+    cout << endl <<"Metricas teoricas para n = " << n << endl;
 
     cout << setw(37) << left << "Algoritmo" << setw(18) << "T1" << setw(19) << "Tinf" << setw(20) << "Paralelismo" << setw(20) << "Pmin" << endl;
     cout << string(110, '-') << endl;
@@ -158,4 +257,13 @@ void printAssignmentReminder(void)
 {
     cout << "\nRecordatorio: incluir TDG, T1, Tinf, paralelismo=T1/Tinf y Pmin.\n" << endl;
     return;
+}
+
+
+int main(){
+    int n = 1<<20; // Tamaño del vector (2^20)
+    cout << "hilos disponibles para paralelismo: "<< p << endl;
+    printTheoreticalMetrics(n);
+    printAssignmentReminder();
+    return 0;
 }
