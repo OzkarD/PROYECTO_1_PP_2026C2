@@ -21,6 +21,7 @@ void sequential::bubble_sort(int* v, int n)
             }
         }
     }
+	checkSorted(v, n);
     return;
 }
 

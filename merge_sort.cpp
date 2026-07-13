@@ -1,5 +1,7 @@
 #include "merge_sort.h"
 #include <iostream>
+#include "vector_tools.h"
+#include <omp.h>
 
 using namespace std;
 //----------------------------------------------------------------------------------------------------------
@@ -101,13 +103,15 @@ void sequential::merge_sort(int* v, int n)
         return;
 
     mergeSort(v, 0, n - 1);
+	checkSorted(v, n);
 }
 
 void parallel::merge_sort(int* v, int n)
 {
-   // cout << "Ejecutando merge_sort paralelo..." << endl;
+    cout << "Ejecutando merge_sort paralelo..." << endl;
     if (n <= 1)
         return;
 
     merge_sort_parallel(v, 0, n - 1);
+	checkSorted(v, n);
 }

@@ -117,25 +117,25 @@ void sequential::bitonic_sort(int* v, int n)
         v[i] = temp[i];
 	checkSorted(v, n);
 }
- 
-void parallel::bitonic_sort(int* v, int n)
+void bitonicMerge_parallel(int v[], int low, int count, bool ascending)
 {
-    cout << "Ejecutando bitonic_sort paralelo..." << endl;
-
-    if (v == nullptr || n <= 1)
-        return;
-
-#pragma omp parallel
+    if (count <= UMBRAL) 
     {
-#pragma omp single
-        {
-            bitonicSort_parallel(v, 0, n, false);
-            // false = descendente
-            // true  = ascendente
-        }
+        bitonicMerge(v, low, count, ascending); 
+        return;
     }
-}
 
+        int k = count / 2;
+
+#pragma omp parallel for if(count > UMBRAL)
+        for (int i = low; i < low + k; i++)
+        {
+            compare(v, i, i + k, ascending);
+        }
+
+        bitonicMerge_parallel(v, low, k, ascending);
+        bitonicMerge_parallel(v, low + k, k, ascending);
+}
 void bitonicSort_parallel(int v[], int low, int count, bool ascending)
 {
     if (count <= UMBRAL)
@@ -161,23 +161,23 @@ void bitonicSort_parallel(int v[], int low, int count, bool ascending)
         bitonicMerge_parallel(v, low, count, ascending);
 
 }
-
-void bitonicMerge_parallel(int v[], int low, int count, bool ascending)
+ 
+void parallel::bitonic_sort(int* v, int n)
 {
-    if (count <= UMBRAL) 
-    {
-        bitonicMerge(v, low, count, ascending); 
+    cout << "Ejecutando bitonic_sort paralelo..." << endl;
+
+    if (v == nullptr || n <= 1)
         return;
-    }
 
-        int k = count / 2;
-
-#pragma omp parallel for if(count > UMBRAL)
-        for (int i = low; i < low + k; i++)
+#pragma omp parallel
+    {
+#pragma omp single
         {
-            compare(v, i, i + k, ascending);
+            bitonicSort_parallel(v, 0, n, false);
+            // false = descendente
+            // true  = ascendente
         }
-
-        bitonicMerge_parallel(v, low, k, ascending);
-        bitonicMerge_parallel(v, low + k, k, ascending);
+    }
+	checkSorted(v, n);
 }
+

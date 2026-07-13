@@ -22,6 +22,7 @@ void sequential::insertion_sort(int* v, int n)
         v[j + 1] = key;
         
     }
+	checkSorted(v, n);
     return;
 }
 
