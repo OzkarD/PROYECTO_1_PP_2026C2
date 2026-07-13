@@ -1,14 +1,10 @@
 #include <iostream>
-<<<<<<< HEAD
 #include <omp.h>
-
 #define UMBRAL 1024
-=======
 #include <limits>
 #include <vector>
 #include "bitonic_sort.h"
 #include "vector_tools.h"
->>>>>>> Integrador_Jhon
 
 using namespace std;
 
