@@ -19,6 +19,7 @@
 //Implementado por el Integrador
 #include "vector_tools.cpp"
 #include "insertion_sort.cpp"
+#include "merge_sort.cpp"
 
 /*
 int main()
@@ -43,3 +44,26 @@ int main()
 	return 0;
 }
 */
+
+
+int main()
+{
+	srand((unsigned)time(NULL));
+	//UserData data = getUserData();
+
+	const int N = 1e8;
+	int* vector = createVector(N);
+	fillRandom(vector, N,-50, 50);
+	printSample(vector, N, 20);
+
+	parallel::merge_sort(vector, N);
+
+	for (int i = 0; i < 20; i++)
+	{
+		printf("%d ", vector[i]);
+	}
+
+	destroyVector(vector);
+
+	return 0;
+}

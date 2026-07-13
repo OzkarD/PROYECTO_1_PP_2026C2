@@ -210,7 +210,7 @@ void parallel::bitonic_sort(int* v, int n)
 }
 
 //Implementado por el integrador
-
+/*
 int main(void)
 {
     srand(time(NULL));
@@ -236,3 +236,4 @@ int main(void)
 
     delete[] array;
 }
+*/

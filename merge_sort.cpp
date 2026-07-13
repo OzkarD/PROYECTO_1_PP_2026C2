@@ -2,37 +2,6 @@
 #include <iostream>
 
 using namespace std;
-
-void sequential::merge_sort(int* v, int n)
-{
-    cout << "Ejecutando merge_sort secuencial..." << endl;
-
-    if (n <= 1)
-        return;
-
-    mergeSort(v, 0, n - 1);
-}
-
-void parallel::merge_sort(int* v, int n) 
-{
-    cout << "Ejecutando merge_sort paralelo..." << endl;
-    return;
-}
-
-//----------------------------------------------------------------------------------------------------------
-
-void mergeSort(int* v, int left, int right)
-{
-    if (left < right)
-    {
-        int mid = left + (right - left) / 2;
-
-        mergeSort(v, left, mid);
-        mergeSort(v, mid + 1, right);
-        merge(v, left, mid, right);
-    }
-}
-
 //----------------------------------------------------------------------------------------------------------
 
 void merge(int* v, int left, int mid, int right) // Función auxiliar para fusionar dos arreglos ya ordenados
@@ -86,3 +55,59 @@ void merge(int* v, int left, int mid, int right) // Función auxiliar para fusio
     delete[] R;
 }
 //----------------------------------------------------------------------------------------------------------
+
+void mergeSort(int* v, int left, int right)
+{
+    if (left < right)
+    {
+        int mid = left + (right - left) / 2;
+
+        mergeSort(v, left, mid);
+        mergeSort(v, mid + 1, right);
+        merge(v, left, mid, right);
+    }
+}
+//----------------------------------------------------------------------------------------------------------
+
+void merge_sort_parallel(int* v, int left, int right)
+{
+    // cout << "Ejecutando merge_sort paralelo..." << endl;
+
+    if (left >= right)
+    {
+        return;
+    }
+
+
+    int mid = left + (right - left) / 2;
+
+    #pragma omp task
+    merge_sort_parallel(v, left, mid);
+
+    #pragma omp task
+    merge_sort_parallel(v, mid + 1, right);
+
+    #pragma omp taskwait
+    merge(v, left, mid, right);
+
+}
+//----------------------------------------------------------------------------------------------------------
+
+void sequential::merge_sort(int* v, int n)
+{
+    cout << "Ejecutando merge_sort secuencial..." << endl;
+
+    if (n <= 1)
+        return;
+
+    mergeSort(v, 0, n - 1);
+}
+
+void parallel::merge_sort(int* v, int n)
+{
+   // cout << "Ejecutando merge_sort paralelo..." << endl;
+    if (n <= 1)
+        return;
+
+    merge_sort_parallel(v, 0, n - 1);
+}
