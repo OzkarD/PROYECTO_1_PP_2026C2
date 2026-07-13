@@ -123,38 +123,37 @@ void sequential::selection_sort(int* v, int n)
 void parallel::selection_sort(int* v, int n) 
 {
     cout << "Ejecutando selection_sort paralelo..." << endl;
-    
+
+    int num_threads = omp_get_max_threads(); // número de hilos disponibles
+    vector<int> mins(num_threads);           // arreglo dinámico, uno por hilo
+
     for (int i = 0; i < n - 1; i++)
-{
-    int value_min = i;
-
-    // Arreglo para guardar el mínimo de cada hilo
-    int mins[MAX_THREADS];
-
-    #pragma omp parallel
     {
-        int tid = omp_get_thread_num();
-        int local_min = value_min;
+        int value_min = i;
 
-        #pragma omp for
-        for (int j = i + 1; j < n; j++)
+        #pragma omp parallel
         {
-            if (v[j] < v[local_min])
-                local_min = j;
+            int tid = omp_get_thread_num();
+            int local_min = value_min;
+
+            #pragma omp for
+            for (int j = i + 1; j < n; j++)
+            {
+                if (v[j] < v[local_min])
+                    local_min = j;
+            }
+
+            mins[tid] = local_min;
         }
 
-        // Cada hilo guarda SU resultado
-        mins[tid] = local_min;
+        for (int t = 0; t < num_threads; t++)
+        {
+            if (v[mins[t]] < v[value_min])
+                value_min = mins[t];
+        }
+
+        swap(v[i], v[value_min]);
     }
 
-    // Un solo hilo compara los mínimos de cada hilo
-    for (int t = 0; t < num_threads; t++)
-    {
-        if (v[mins[t]] < v[value_min])
-            value_min = mins[t];
-    }
-
-    swap(v[i], v[value_min]);
-}
     checkSorted(v, n);
 }
